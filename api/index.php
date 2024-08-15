@@ -1,9 +1,6 @@
 <?php
+require_once("header.php");
 
-header('content-type: application/json');
-echo json_encode([
-    'time' => time(),
-    'date' => date('d.m.Y'),
-    'tech' => 'Vercel'
-]);
+require_once("sistema.php");
 
+require_once("footer.php");
