@@ -1,13 +1,15 @@
 <?php
 require_once("header.php");
 
-$sHTML = '<div> <link rel="stylesheet" href="formulario.css">';
+$sHTML = '<div> <link rel="stylesheet" href="css/formulario.css">';
 
 // FORMULARIO DE CADASTRO DE ALUNOS
 $sHTML .= '<h2 style="text-align:center;">Formulário de Aluno</h2>
-    <form action="processar_formulario.php" method="post">
-        <label for="codigo">Código:</label>
-        <input type="text" id="codigo" name="codigo" value="1" required>
+    <form action="cadastrar_aluno.php" method="POST">
+        <input type="hidden" id="ACAO" name="ACAO" value="INCLUIR">
+
+        <label style="display:none" for="codigo">Código:</label>
+        <input style="display:none" type="text" id="codigo" name="codigo" value="1" required disabled>
 
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" required value="Gelvazio">
@@ -22,10 +24,10 @@ $sHTML .= '<h2 style="text-align:center;">Formulário de Aluno</h2>
     </form>';
 
 // CONSULTA DE ALUNOS
-
 $sHTML .= '<h2 style="text-align:center;">Consulta de Aluno</h2>
 </div>';
 
 echo $sHTML;
 
 require_once("footer.php");
+

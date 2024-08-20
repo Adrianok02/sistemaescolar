@@ -1,13 +1,15 @@
 <?php
-echo '<link rel="stylesheet" href="style.css">';
+echo '<link rel="stylesheet" href="css/style.css">';
+echo '<link rel="stylesheet" href="css/button.css">';
 
-echo '<body class="background-06">';
+$sHTML = '<body class="background-06">';
 
-$sHTML = '
+$sHTML .= '
 <div class="header">
     <ul>
-        <li><a href="aluno.php">Alunos</a></li>
+        <li><a href="consulta_aluno.php">Alunos</a></li>
     </ul>
-</div>';
+</div>
+<div class="container">';
 
 echo $sHTML;

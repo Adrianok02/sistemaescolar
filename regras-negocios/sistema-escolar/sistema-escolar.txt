@@ -1,0 +1,43 @@
+[Módulo de Alunos - criar pasta de nome aluno
+#Cadastro de Alunos:
+1 - Crie um arquivo de nome aluno.php
+2 - Neste arquivo, crie um formulario html com as colunas 
+abaixo:
+nome, data de nascimento, 
+endereço, telefone, e-mail, e código da turma
+
+3 - No action colocar "action="cadastrar_aluno.php""
+
+4 - Criar um arquivo de nome "cadastrar_aluno.php"
+
+#Atualização de Dados de Alunos
+5 - Neste arquivo PHP "cadastrar_aluno.php", 
+os dados devem ser lidos e armazenados
+num arquivo de nome "alunos.json", usando file_put_contents.
+
+5.1 - Para armazenar, deve ser usada a logica 
+de busca do arquivo, se existir dados, deve adicionar mais um aluno,
+senao deve criar um novo arquivo.
+
+#Visualização de Alunos
+6 - Criar uma consulta em html, e listar
+os dados do arquivo de nome "alunos.json"
+6.1 - Arquivo deve se chamar "consultar_aluno.php"
+
+#Consulta de Histórico Acadêmico
+
+#Emissão de Boletins
+
+
+[Módulo de Professores
+
+[Módulo de Notas
+
+[Módulo de Matérias
+
+[Módulo de Horários
+
+[Módulo de Relatórios
+
+
+

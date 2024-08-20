@@ -1,0 +1,50 @@
+html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.background-06 {
+    background: linear-gradient(90deg, #43a4f9, #1ef4ff);
+}
+
+body {
+    height: 98vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+
+.header ul li {
+    list-style: none;
+}
+
+.header ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.header ul li a:hover {
+    font-weight: 100;
+    background-color: #1ef4ff;
+}
+
+/* CLASSE CONTAINER */
+.container{
+    margin: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#autor{
+    /* NEGRITO */
+    font-weight: bold;
+    margin: 0 5px;
+}

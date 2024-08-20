@@ -1,10 +1,12 @@
 <?php
 
-$sHTML = '
+// FECHA O CONTAINER
+$sHTML = '</div>';
+
+$sHTML .= '
 <div class="footer">
-    Desenvolvido por NOME-ALUNO para fins educacionais. © All Rights Reserved!
-</div>';
+    Desenvolvido por <div id="autor">Gelvazio Camargo</div> para fins educacionais. © All Rights Reserved!
+</div>
+</body>';
 
 echo $sHTML;
-
-echo '</body>';
