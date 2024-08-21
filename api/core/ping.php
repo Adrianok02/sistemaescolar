@@ -8,4 +8,3 @@ echo json_encode([
     'tech' => 'Vercel'
 ]);
 
-

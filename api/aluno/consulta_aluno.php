@@ -1,6 +1,18 @@
 <?php
 
-require_once("header.php");
+function getAcaoExcluirAluno($codigoAluno){
+    $sHTML = "<a id='acaoExcluir' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=EXCLUIR&codigo=" . $codigoAluno . "'>Excluir</a>";
+
+    return $sHTML;
+}
+
+function getAcaoAlterarAluno($codigoAluno){
+    $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=ALTERAR&codigo=" . $codigoAluno . "'>Alterar</a>";
+
+    return $sHTML;
+}
+
+require_once("../core/header.php");
 
 echo '<h3 style="text-align:center;">CONSULTA DE ALUNO</h3>';
 
@@ -16,6 +28,8 @@ $htmlTabelaAlunos = "
 
 $htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
 $htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'><a href='aluno.php' target='_blank'>Incluir - PHP</a><button>";
+
+
 $htmlTabelaAlunos .= "<table border='1'>";
 
 // HEADER DA TABLE
@@ -27,6 +41,7 @@ $htmlTabelaAlunos .= "  <th>Código</th>";
 $htmlTabelaAlunos .= "  <th>Nome</th>";
 $htmlTabelaAlunos .= "  <th>E-mail</th>";
 $htmlTabelaAlunos .= "  <th>Senha</th>";
+$htmlTabelaAlunos .= "  <th colspan='2'>Ações</th>";
 $htmlTabelaAlunos .= "</tr>";
 
 $htmlTabelaAlunos .= "</head>";
@@ -60,6 +75,18 @@ foreach($arDadosAlunos as $aDados){
     $htmlTabelaAlunos .= "<td>" . $aDados["email"] . "</td>";
     $htmlTabelaAlunos .= "<td>" . $aDados["senha"] . "</td>";
 
+    // Adiciona a ação de excluir aluno
+    $codigoAluno = $aDados["codigo"];
+
+    $htmlTabelaAlunos .= '<td>';
+    $htmlTabelaAlunos .= getAcaoExcluirAluno($codigoAluno);
+    $htmlTabelaAlunos .= '</td>';
+
+    $htmlTabelaAlunos .= '<td>';
+    $htmlTabelaAlunos .= getAcaoAlterarAluno($codigoAluno);
+    $htmlTabelaAlunos .= '</td>';
+
+
     // FECHAR A LINHA ATUAL
     $htmlTabelaAlunos .= "</tr>";
 }
@@ -70,4 +97,4 @@ $htmlTabelaAlunos .= "</table>";
 
 echo $htmlTabelaAlunos;
 
-require_once("footer.php");
+require_once("../core/footer.php");
