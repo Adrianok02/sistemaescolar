@@ -73,12 +73,12 @@ $sHTML .= '<h2 style="text-align:center;">Formulário de Escola</h2>
 
         <label for="cidade">Cidade:</label>
         <select id="cidade" name="cidade">
-            <option value="1">Rio do Sul</option>
-            <option value="2">Ibirama</option>
-            <option value="3">Ituporanga</option>
-            <option value="4">Joinvile</option>
-            <option value="5">Florianópolis</option>
-            <option value="6">Blumenau</option>
+            <option value="Rio do Sul">Rio do Sul</option>
+            <option value="Ibirama">Ibirama</option>
+            <option value="Ituporanga">Ituporanga</option>
+            <option value="Joinvile">Joinvile</option>
+            <option value="Florianópolis">Florianópolis</option>
+            <option value="Blumenau">Blumenau</option>
         </select> 
         <br>      
         <br>      
