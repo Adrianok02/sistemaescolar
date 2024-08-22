@@ -1,100 +1,100 @@
 <?php
 
-function getAcaoExcluirAluno($codigoAluno){
-    $sHTML = "<a id='acaoExcluir' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=EXCLUIR&codigo=" . $codigoAluno . "'>Excluir</a>";
+function getAcaoExcluirEscola($codigoEscola){
+    $sHTML = "<a id='acaoExcluir' href='http://localhost/sistemaescolar/api/escola/cadastrar_escola.php?ACAO=EXCLUIR&codigo=" . $codigoEscola . "'>Excluir</a>";
 
     return $sHTML;
 }
 
-function getAcaoAlterarAluno($codigoAluno){
-    $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=ALTERAR&codigo=" . $codigoAluno . "'>Alterar</a>";
+function getAcaoAlterarEscola($codigoEscola){
+    $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/escola/cadastrar_escola.php?ACAO=ALTERAR&codigo=" . $codigoEscola . "'>Alterar</a>";
 
     return $sHTML;
 }
 
 require_once("../core/header.php");
 
-echo '<h3 style="text-align:center;">CONSULTA DE ALUNO</h3>';
+echo '<h3 style="text-align:center;">CONSULTA DE Escola</h3>';
 
 // JAVASCRIPT
-$htmlTabelaAlunos = "
+$htmlTabelaEscolas = "
     <script>
         function abreCadastroInclusao(){
-            // alert('Abrindo cadastro de inclusao de aluno...');
-            window.location.href = 'aluno.php';
+            // alert('Abrindo cadastro de inclusao de Escola...');
+            window.location.href = 'Escola.php';
         }
     </script>
 ";
 
-$htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
-$htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'><a href='aluno.php' target='_blank'>Incluir - PHP</a><button>";
+$htmlTabelaEscolas .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
+$htmlTabelaEscolas .= "<button class='button' type='button' onclick='abreCadastroInclusao()'><a href='escola.php' target='_blank'>Incluir - PHP</a><button>";
 
 
-$htmlTabelaAlunos .= "<table border='1'>";
+$htmlTabelaEscolas .= "<table border='1'>";
 
 // HEADER DA TABLE
-$htmlTabelaAlunos .= "<head>";
+$htmlTabelaEscolas .= "<head>";
 
 // TITULOS DA TABLE
-$htmlTabelaAlunos .= "<tr>";
-$htmlTabelaAlunos .= "  <th>Código</th>";
-$htmlTabelaAlunos .= "  <th>Nome</th>";
-$htmlTabelaAlunos .= "  <th>E-mail</th>";
-$htmlTabelaAlunos .= "  <th>Senha</th>";
-$htmlTabelaAlunos .= "  <th colspan='2'>Ações</th>";
-$htmlTabelaAlunos .= "</tr>";
+$htmlTabelaEscolas .= "<tr>";
+$htmlTabelaEscolas .= "  <th>Código</th>";
+$htmlTabelaEscolas .= "  <th>Descrição</th>";
+$htmlTabelaEscolas .= "  <th>Cidade</th>";
+$htmlTabelaEscolas .= "  <th>Tipo de Encino</th>";
+$htmlTabelaEscolas .= "  <th colspan='2'>Ações</th>";
+$htmlTabelaEscolas .= "</tr>";
 
-$htmlTabelaAlunos .= "</head>";
+$htmlTabelaEscolas .= "</head>";
 
 // CORPO DA TABELA
-$htmlTabelaAlunos .= "<tbody>";
+$htmlTabelaEscolas .= "<tbody>";
 
 // LINHAS DA TABELA
 // LER OS DADOS DO ARQUIVO
-$arDadosAlunos = array();
+$arDadosEscolas = array();
 // Primeiro, verifica se existe dados no arquivo json
 // @ na frente do metodo, remove o warning
-$dadosAlunos = @file_get_contents("alunos.json");
-if($dadosAlunos){
+$dadosEscolas = @file_get_contents("escolas.json");
+if($dadosEscolas){
     // transforma os dados lidos em ARRAY, que estavam em JSON
-    $arDadosAlunos = json_decode($dadosAlunos, true);
+    $arDadosEscolas = json_decode($dadosEscolas, true);
 }
 
-foreach($arDadosAlunos as $aDados){
-    // echo '<br>lendo dados do aluno: ' . json_encode($aDados);
+foreach($arDadosEscolas as $aDados){
+    // echo '<br>lendo dados do Escola: ' . json_encode($aDados);
 
     // ABRIR UMA NOVA LINHA
-    $htmlTabelaAlunos .= "<tr>";
+    $htmlTabelaEscolas .= "<tr>";
     
     // COLUNAS DENTRO DA LINHA
     // ALINHAMENTO
     // TEXTO, ALINHADO A ESQUERDA
     // VALORES, ALINHADOS A DIREITA
-    $htmlTabelaAlunos .= "<td align='center'>" . $aDados["codigo"] . "</td>";
-    $htmlTabelaAlunos .= "<td>" . $aDados["nome"] . "</td>";
-    $htmlTabelaAlunos .= "<td>" . $aDados["email"] . "</td>";
-    $htmlTabelaAlunos .= "<td>" . $aDados["senha"] . "</td>";
+    $htmlTabelaEscolas .= "<td align='center'>" . $aDados["codigo"] . "</td>";
+    $htmlTabelaEscolas .= "<td>" . $aDados["descricao"] . "</td>";
+    $htmlTabelaEscolas .= "<td>" . $aDados["cidade"] . "</td>";
+    $htmlTabelaEscolas .= "<td>" . $aDados["tipo_de_encino"] . "</td>";
 
-    // Adiciona a ação de excluir aluno
-    $codigoAluno = $aDados["codigo"];
+    // Adiciona a ação de excluir Escola
+    $codigoEscola = $aDados["codigo"];
 
-    $htmlTabelaAlunos .= '<td>';
-    $htmlTabelaAlunos .= getAcaoExcluirAluno($codigoAluno);
-    $htmlTabelaAlunos .= '</td>';
+    $htmlTabelaEscolas .= '<td>';
+    $htmlTabelaEscolas .= getAcaoExcluirEscola($codigoEscola);
+    $htmlTabelaEscolas .= '</td>';
 
-    $htmlTabelaAlunos .= '<td>';
-    $htmlTabelaAlunos .= getAcaoAlterarAluno($codigoAluno);
-    $htmlTabelaAlunos .= '</td>';
+    $htmlTabelaEscolas .= '<td>';
+    $htmlTabelaEscolas .= getAcaoAlterarEscola($codigoEscola);
+    $htmlTabelaEscolas .= '</td>';
 
 
     // FECHAR A LINHA ATUAL
-    $htmlTabelaAlunos .= "</tr>";
+    $htmlTabelaEscolas .= "</tr>";
 }
 
-$htmlTabelaAlunos .= "</tbody>";
+$htmlTabelaEscolas .= "</tbody>";
 
-$htmlTabelaAlunos .= "</table>";
+$htmlTabelaEscolas .= "</table>";
 
-echo $htmlTabelaAlunos;
+echo $htmlTabelaEscolas;
 
 require_once("../core/footer.php");

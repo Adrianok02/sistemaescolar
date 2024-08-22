@@ -1,79 +1,80 @@
 <?php
-function alterar_aluno(){
-    $codigoAlunoAlterar = $_POST["codigo"];
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
+function alterar_escola(){
+    $codigoEscolaAlterar = $_POST["codigo"];
+    $descricao = $_POST["descricao"];
+    $cidade = $_POST["cidade"];
+    $tidoDeEnsino = $_POST["tipo_de_ensino"];
     
-    $dadosAlunos = @file_get_contents("alunos.json");
-    $arDadosAlunos = json_decode($dadosAlunos, true);
+    $dadosEscolas = @file_get_contents("escolas.json");
+    $arDadosEscolas = json_decode($dadosEscolas, true);
 
-    $arDadosAlunosNovo = array();
-    foreach($arDadosAlunos as $aDados){
+    $arDadosEscolasNovo = array();
+    foreach($arDadosEscolas as $aDados){
         $codigoAtual = $aDados["codigo"];
 
-        if($codigoAlunoAlterar == $codigoAtual){
-            $aDados["nome"] = $nome;
-            $aDados["email"] = $email;
+        if($codigoEscolaAlterar == $codigoAtual){
+            $aDados["descricao"] = $descricao;
+            $aDados["cidade"] = $cidade;
         }
 
-        $arDadosAlunosNovo[] = $aDados;
+        $arDadosEscolasNovo[] = $aDados;
     }
 
     // Gravar os dados no arquivo
-    file_put_contents("alunos.json", json_encode($arDadosAlunosNovo));
+    file_put_contents("escolas.json", json_encode($arDadosEscolasNovo));
 }
 
-function excluir_aluno(){
-    $codigoAlunoExcluir = $_GET["codigo"];
+function excluir_Escola(){
+    $codigoEscolaExcluir = $_GET["codigo"];
 
-    $dadosAlunos = @file_get_contents("alunos.json");
-    $arDadosAlunos = json_decode($dadosAlunos, true);
+    $dadosEscolas = @file_get_contents("escolas.json");
+    $arDadosEscolas = json_decode($dadosEscolas, true);
 
-    $arDadosAlunosNovo = array();
-    foreach($arDadosAlunos as $aDados){
+    $arDadosEscolasNovo = array();
+    foreach($arDadosEscolas as $aDados){
         $codigoAtual = $aDados["codigo"];
 
-        if($codigoAlunoExcluir == $codigoAtual){
+        if($codigoEscolaExcluir == $codigoAtual){
             // ignora e vai para o proximo registro
             continue;
         }
 
-        $arDadosAlunosNovo[] = $aDados;
+        $arDadosEscolasNovo[] = $aDados;
     }
 
     // Gravar os dados no arquivo
-    file_put_contents("alunos.json", json_encode($arDadosAlunosNovo));
+    file_put_contents("escolas.json", json_encode($arDadosEscolasNovo));
 }
 
-function incluir_aluno(){
-    $arDadosAlunos = array();
+function incluir_escola(){
+    $arDadosEscolas = array();
 
     // Primeiro, verifica se existe dados no arquivo json
     // @ na frente do metodo, remove o warning
-    $dadosAlunos = @file_get_contents("alunos.json");
-    if($dadosAlunos){
+    $dadosEscolas = @file_get_contents("escolas.json");
+    if($dadosEscolas){
         // transforma os dados lidos em ARRAY, que estavam em JSON
-        $arDadosAlunos = json_decode($dadosAlunos, true);
+        $arDadosEscolas = json_decode($dadosEscolas, true);
     }
 
-    // Armazenar os dados do aluno atual, num array associativo
+    // Armazenar os dados do Escola atual, num array associativo
 
-    $aDadosAlunoAtual = array();
-    $aDadosAlunoAtual["codigo"] = getProximoCodigo($arDadosAlunos);
-    $aDadosAlunoAtual["nome"] = $_POST["nome"];
-    $aDadosAlunoAtual["email"] = $_POST["email"];
-    $aDadosAlunoAtual["senha"] = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+    $aDadosEscolaAtual = array();
+    $aDadosEscolaAtual["codigo"] = getProximoCodigo($arDadosEscolas);
+    $aDadosEscolaAtual["descricao"] = $_POST["descricao"];
+    $aDadosEscolaAtual["cidade"] = $_POST["cidade"];
+    $aDadosEscolaAtual["tipo_de_ensino"] = $_POST["tipo_de_ensino"];
 
-    // Pega os dados atuais do aluno e armazena no array que foi lido
-    $arDadosAlunos[] = $aDadosAlunoAtual;
+    // Pega os dados atuais do Escola e armazena no array que foi lido
+    $arDadosEscolas[] = $aDadosEscolaAtual;
 
     // Gravar os dados no arquivo
-    file_put_contents("alunos.json", json_encode($arDadosAlunos));
+    file_put_contents("escolas.json", json_encode($arDadosEscolas));
 }
 
-function getProximoCodigo($arDadosAlunos){
+function getProximoCodigo($arDadosEscolas){
     $ultimoCodigo = 0;
-    foreach($arDadosAlunos as $aDados){
+    foreach($arDadosEscolas as $aDados){
         $codigoAtual = $aDados["codigo"];
 
         if($codigoAtual > $ultimoCodigo){
@@ -92,30 +93,30 @@ function getProximoCodigo($arDadosAlunos){
 if(isset($_POST["ACAO"])){
     $acao = $_POST["ACAO"];
     if($acao == "INCLUIR"){
-        incluir_aluno();
+        incluir_escola();
 
-        // Redireciona para a pagina de consulta de aluno
-        header('Location: consulta_aluno.php');
+        // Redireciona para a pagina de consulta de Escola
+        header('Location: consulta_escola.php');
     } else if($acao == "ALTERAR"){        
-        alterar_aluno();
+        alterar_escola();
 
-        // Redireciona para a pagina de consulta de aluno
-        header('Location: consulta_aluno.php');
+        // Redireciona para a pagina de consulta de Escola
+        header('Location: consulta_escola.php');
     }
 } else if(isset($_GET["ACAO"])){
     $acao = $_GET["ACAO"];
     if($acao == "EXCLUIR"){
-        excluir_aluno();
+        excluir_Escola();
         
-        // Redireciona para a pagina de consulta de aluno
-        header('Location: consulta_aluno.php');
+        // Redireciona para a pagina de consulta de Escola
+        header('Location: consulta_escola.php');
     } else if($acao == "ALTERAR"){
-        $codigoAlunoAlterar = $_GET["codigo"];
+        $codigoEscolaAlterar = $_GET["codigo"];
 
-        // Redireciona para a pagina de aluno
-        header('Location: aluno.php?ACAO=ALTERAR&codigo=' . $codigoAlunoAlterar);
+        // Redireciona para a pagina de Escola
+        header('Location: escola.php?ACAO=ALTERAR&codigo=' . $codigoEscolaAlterar);
     }
 } else {
-    // Redireciona para a pagina de consulta de aluno
-    header('Location: consulta_aluno.php');
+    // Redireciona para a pagina de consulta de Escola
+    header('Location: consulta_escola.php');
 }
