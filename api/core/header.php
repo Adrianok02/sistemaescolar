@@ -17,13 +17,15 @@ echo '
           <link rel="stylesheet" href="../css/button.css">
     </head>
 <body class="background-06">
-    <div class="header">
-        <ul>
-            <li><a href="../' . $url_inicial . 'index.php">Home</a></li>
-            <li><a href="../' . $url_inicial . 'aluno/consulta_aluno.php">Alunos</a></li>
-            <li><a href="../' . $url_inicial . 'professor/consulta_professor.php">Professor</a></li>
-        </ul>
-    </div>
+
+        <div class="header">
+            <ul>
+                <li><a href="../' . $url_inicial . 'index.php">Home</a></li>
+                <li><a href="../' . $url_inicial . 'aluno/consulta_aluno.php">Alunos</a></li>
+                <li><a href="../' . $url_inicial . 'professor/consulta_professor.php">Professor</a></li>
+                <li><a href="../' . $url_inicial . 'escola/consulta_escola.php">Escola</a></li>
+            </ul>
+        </div>
 
     <div class="container">';
 // abre o container
