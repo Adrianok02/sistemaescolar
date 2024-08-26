@@ -1,33 +1,47 @@
 <?php
+function getNomeCidade($codigoCidade){
+    $nomeCidade = 'cidade invalida';
+    switch($codigoCidade){
+        case 1:
+            $nomeCidade = 'Rio do Sul';
+            break;
+        case 2:
+            $nomeCidade = 'Ibirama';
+            break;
+        case 3:
+            $nomeCidade = 'Ituporanga';
+            break;                    
+        case 4:
+            $nomeCidade = 'Joinville';
+            break;
+        case 5:
+            $nomeCidade = 'Florianopolis';
+            break;
+        case 6:
+            $nomeCidade = 'Blumenau';
+            break;
+    }
+
+    return $nomeCidade;
+}
 
 function getAcaoExcluirEscola($codigoEscola){
-    $sHTML = "<a id='acaoExcluir' href='http://localhost/sistemaescolar/api/escola/cadastrar_escola.php?ACAO=EXCLUIR&codigo=" . $codigoEscola . "'>Excluir</a>";
+    $sHTML = "<a id='acaoExcluir' href='http://localhost/sistemaescolar/api/Escola/cadastrar_escola.php?ACAO=EXCLUIR&codigo=" . $codigoEscola . "'>Excluir</a>";
 
     return $sHTML;
 }
 
 function getAcaoAlterarEscola($codigoEscola){
-    $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/escola/cadastrar_escola.php?ACAO=ALTERAR&codigo=" . $codigoEscola . "'>Alterar</a>";
+    $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/Escola/cadastrar_escola.php?ACAO=ALTERAR&codigo=" . $codigoEscola . "'>Alterar</a>";
 
     return $sHTML;
 }
 
 require_once("../core/header.php");
 
-echo '<h3 style="text-align:center;">CONSULTA DE Escola</h3>';
+echo '<h3 style="text-align:center;">CONSULTA DE ESCOLA</h3>';
 
-// JAVASCRIPT
-$htmlTabelaEscolas = "
-    <script>
-        function abreCadastroInclusao(){
-            // alert('Abrindo cadastro de inclusao de Escola...');
-            window.location.href = 'Escola.php';
-        }
-    </script>
-";
-
-$htmlTabelaEscolas .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
-$htmlTabelaEscolas .= "<button class='button' type='button' onclick='abreCadastroInclusao()'><a href='escola.php' target='_blank'>Incluir - PHP</a><button>";
+$htmlTabelaEscolas = "<button class='button' type='button'><a href='escola.php' target='_blank'>Incluir</a><button>";
 
 
 $htmlTabelaEscolas .= "<table border='1'>";
@@ -40,7 +54,6 @@ $htmlTabelaEscolas .= "<tr>";
 $htmlTabelaEscolas .= "  <th>Código</th>";
 $htmlTabelaEscolas .= "  <th>Descrição</th>";
 $htmlTabelaEscolas .= "  <th>Cidade</th>";
-$htmlTabelaEscolas .= "  <th>Tipo de Encino</th>";
 $htmlTabelaEscolas .= "  <th colspan='2'>Ações</th>";
 $htmlTabelaEscolas .= "</tr>";
 
@@ -54,7 +67,7 @@ $htmlTabelaEscolas .= "<tbody>";
 $arDadosEscolas = array();
 // Primeiro, verifica se existe dados no arquivo json
 // @ na frente do metodo, remove o warning
-$dadosEscolas = @file_get_contents("escolas.json");
+$dadosEscolas = @file_get_contents("escola.json");
 if($dadosEscolas){
     // transforma os dados lidos em ARRAY, que estavam em JSON
     $arDadosEscolas = json_decode($dadosEscolas, true);
@@ -72,8 +85,11 @@ foreach($arDadosEscolas as $aDados){
     // VALORES, ALINHADOS A DIREITA
     $htmlTabelaEscolas .= "<td align='center'>" . $aDados["codigo"] . "</td>";
     $htmlTabelaEscolas .= "<td>" . $aDados["descricao"] . "</td>";
-    $htmlTabelaEscolas .= "<td>" . $aDados["cidade"] . "</td>";
-    $htmlTabelaEscolas .= "<td>" . $aDados["tipo_de_encino"] . "</td>";
+
+    $codigoCidade = $aDados["cidade"];
+    $nomeCidade = getNomeCidade($codigoCidade);
+
+    $htmlTabelaEscolas .= "<td>" . $nomeCidade . "</td>";
 
     // Adiciona a ação de excluir Escola
     $codigoEscola = $aDados["codigo"];
@@ -85,7 +101,6 @@ foreach($arDadosEscolas as $aDados){
     $htmlTabelaEscolas .= '<td>';
     $htmlTabelaEscolas .= getAcaoAlterarEscola($codigoEscola);
     $htmlTabelaEscolas .= '</td>';
-
 
     // FECHAR A LINHA ATUAL
     $htmlTabelaEscolas .= "</tr>";

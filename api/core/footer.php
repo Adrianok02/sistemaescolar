@@ -5,7 +5,7 @@ $sHTML = '</div>';
 
 $sHTML .= '
 <div class="footer">
-    Desenvolvido por <div id="autor">Gelvazio Camargo</div> para fins educacionais. © All Rights Reserved!
+    Desenvolvido por <div id="autor">Adriano Kalbusch</div> para fins educacionais. © All Rights Reserved!
 </div>
 </body>';
 

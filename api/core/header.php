@@ -1,9 +1,10 @@
 <?php
 
 $request_uri = $_SERVER['REQUEST_URI'];
-
 $url_inicial = "";
-if($request_uri == "/sistemaescolar/api/index.php"){
+$url_inicial_css = "../";
+if($request_uri == "/sistemaescolar/api/index.php" || $request_uri == "/sistemaescolar/api/"){
+    $url_inicial_css = "http://localhost/sistemaescolar/api/";
     $url_inicial = "api/";
 }
 
