@@ -6,6 +6,7 @@ function getAcaoExcluirAluno($codigoAluno){
     return $sHTML;
 }
 
+
 function getAcaoAlterarAluno($codigoAluno){
     $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=ALTERAR&codigo=" . $codigoAluno . "'>Alterar</a>";
 
