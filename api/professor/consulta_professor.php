@@ -98,3 +98,4 @@ $htmlTabelaProfessor .= "</table>";
 echo $htmlTabelaProfessor;
 
 require_once("../core/footer.php");
+
