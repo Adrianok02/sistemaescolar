@@ -6,7 +6,6 @@ function getAcaoExcluirAluno($codigoAluno){
     return $sHTML;
 }
 
-
 function getAcaoAlterarAluno($codigoAluno){
     $sHTML = "<a id='acaoAlterar' href='http://localhost/sistemaescolar/api/aluno/cadastrar_aluno.php?ACAO=ALTERAR&codigo=" . $codigoAluno . "'>Alterar</a>";
 
@@ -27,9 +26,10 @@ $htmlTabelaAlunos = "
     </script>
 ";
 
-$htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
-$htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'><a href='aluno.php' target='_blank'>Incluir - PHP</a><button>";
+// $htmlTabelaAlunos .= "<button class='button' type='button' onclick='abreCadastroInclusao()'>Incluir - JAVASCRIPT<button>";
 
+// $htmlTabelaAlunos .= "<a href='aluno.php' target='_blank'><button class='button' type='button'>Incluir<button></a>";
+$htmlTabelaAlunos .= "<a href='aluno.php'><button class='button' type='button'>Incluir<button></a>";
 
 $htmlTabelaAlunos .= "<table border='1'>";
 

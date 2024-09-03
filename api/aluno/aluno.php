@@ -83,8 +83,7 @@ $sHTML .= '<h2 style="text-align:center;">Formulário de Aluno</h2>
     </form>';
 
 // CONSULTA DE ALUNOS
-$sHTML .= '<h2 style="text-align:center;">Consulta de Aluno</h2>
-</div>';
+$sHTML .= '</div>';
 
 echo $sHTML;
 
