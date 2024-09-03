@@ -30,7 +30,7 @@ function getAcaoAlterarMateria($codigo){
 
 require_once("../core/header.php");
 
-echo '<h3 style="text-align:center;">CONSULTA DE TURMA</h3>';
+echo '<h3 style="text-align:center;">CONSULTA DE MATERIA</h3>';
 
 $htmlTabelaMaterias = "<a href='materia.php'><button class='button' type='button'>Incluir<button></a>";
 $htmlTabelaMaterias .= "<table border='1'>";
@@ -50,9 +50,9 @@ $htmlTabelaMaterias .= "<tbody>";
 
 $arDadosMaterias = array();
 
-$dadosTurmas = @file_get_contents("turmas.json");
-if($dadosTurmas){
-    $arDadosMaterias = json_decode($dadosTurmas, true);
+$dadosMaterias = @file_get_contents("materia.json");
+if($dadosMaterias){
+    $arDadosMaterias = json_decode($dadosMaterias, true);
 }
 
 foreach($arDadosMaterias as $aDados){
@@ -65,7 +65,6 @@ foreach($arDadosMaterias as $aDados){
     $htmlTabelaMaterias .= "<td align='left'>" . $nomeTurma . "</td>";
 
     $htmlTabelaMaterias .= "<td align='left'>" . $aDados["nome"] . "</td>";
-
 
     // Adiciona a ação de excluir aluno
     $codigo = $aDados["codigo"];

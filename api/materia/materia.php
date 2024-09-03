@@ -63,7 +63,11 @@ $codigoMateria = "";
 $turma = "";
 $nome = "";
 
-$codigoMateria = false;
+$display = "block;";
+$encontrouTurma = false;
+$mensagemMateriaNaoEncontrado = "";
+
+$codigoTurma = false;
 $acaoFormulario = "INCLUIR";
 if(isset($_GET["ACAO"])){
     $acao = $_GET["ACAO"];
